@@ -1,6 +1,8 @@
+import 'package:crypto_app/presentation/screens/home_screen.dart';
+import 'package:crypto_app/presentation/utils/constants/app_keys.dart';
 import 'package:crypto_app/presentation/utils/constants/colors.dart';
 import 'package:crypto_app/presentation/utils/constants/device_size.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:crypto_app/presentation/utils/constants/navigators.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -56,18 +58,22 @@ class OnboardingScreen extends StatelessWidget {
                     fontSize: 14)),
           ),
           const Spacer(),
-          Container(
-            height: context.screenHeight() / 15,
-            alignment: Alignment.center,
-            margin: const EdgeInsets.only(left: 24, right: 24),
-            decoration: BoxDecoration(
-                color: pColor, borderRadius: BorderRadius.circular(16)),
-            child: const Text('Get Started',
-                style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    color: wColor,
-                    fontSize: 16)),
+          GestureDetector(
+            onTap: () => navigatePush(context, const HomeScreen()),
+            key: getStartedButton,
+            child: Container(
+              height: context.screenHeight() / 15,
+              alignment: Alignment.center,
+              margin: const EdgeInsets.only(left: 24, right: 24),
+              decoration: BoxDecoration(
+                  color: pColor, borderRadius: BorderRadius.circular(16)),
+              child: const Text('Get Started',
+                  style: TextStyle(
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                      color: wColor,
+                      fontSize: 16)),
+            ),
           ),
           const Spacer(),
         ],
