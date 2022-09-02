@@ -44,14 +44,11 @@ class Stacked extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20),
             decoration: BoxDecoration(
               gradient: const LinearGradient(
-                  end: Alignment.centerRight,
-                  begin: Alignment.bottomCenter,
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
                   colors: [
                     gColor1,
                     gColor2,
-                    gColor3,
-                    gColor4,
-                    gColor5,
                   ]),
               borderRadius: BorderRadius.circular(16),
             ),
@@ -79,6 +76,17 @@ class Stacked extends StatelessWidget {
                 )
               ],
             ),
+          ),
+          Row(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(top: 18, bottom: 40),
+                height: 60,
+                width: 100,
+                decoration: BoxDecoration(
+                    color: pColor, borderRadius: BorderRadius.circular(16)),
+              )
+            ],
           )
         ],
       ),
