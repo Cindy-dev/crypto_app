@@ -1,8 +1,9 @@
 # crypto_app
 
-A new Flutter project.
-
 ## Getting Started
+<p align="center">
+  <img src="asset\images\screenshots\Simulator Screen Shot - iPhone 13 Pro Max - 2022-09-01 at 20.35.59.png" width="350" title="Onboarding Screen for ios">
+</p>
 
 This project is a starting point for a Flutter application.
 
