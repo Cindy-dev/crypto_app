@@ -1,4 +1,5 @@
 import 'package:crypto_app/presentation/screens/home_screen.dart';
+import 'package:crypto_app/presentation/screens/main_screen.dart';
 import 'package:crypto_app/presentation/utils/constants/app_keys.dart';
 import 'package:crypto_app/presentation/utils/constants/colors.dart';
 import 'package:crypto_app/presentation/utils/constants/device_size.dart';
@@ -59,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: () => navigatePush(context, const HomeScreen()),
+            onTap: () => navigatePush(context, const MainScreen()),
             key: getStartedButton,
             child: Container(
               height: context.screenHeight() / 15,

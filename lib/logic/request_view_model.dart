@@ -2,8 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'request_view_model.freezed.dart';
 
-//pkey: 9ESSQV10BX295TTNI3GO
-//skey: +yX5eV82pbSbCDlEmAIYtM5zfzNUQTat2iDQYXmS
 
 class RequestStateNotifier<T> extends StateNotifier<RequestState<T>> {
   RequestStateNotifier() : super(const RequestState.idle());

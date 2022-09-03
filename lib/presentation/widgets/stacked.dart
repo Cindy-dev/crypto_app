@@ -78,14 +78,38 @@ class Stacked extends StatelessWidget {
             ),
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
+                alignment: Alignment.center,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
                 margin: const EdgeInsets.only(top: 18, bottom: 40),
-                height: 60,
-                width: 100,
                 decoration: BoxDecoration(
                     color: pColor, borderRadius: BorderRadius.circular(16)),
-              )
+                child: const Text('Deposit',
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        color: wColor,
+                        fontSize: 16)),
+              ),
+              Container(
+                alignment: Alignment.center,
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                margin: const EdgeInsets.only(top: 18, bottom: 40),
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: wColor)),
+                child: const Text('Withdraw',
+                    style: TextStyle(
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400,
+                        color: wColor,
+                        fontSize: 16)),
+              ),
             ],
           )
         ],
