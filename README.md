@@ -2,7 +2,7 @@
 
 ## Getting Started
 <p align="center">
-  <img src="asset\images\screenshots\onboarding.png" width="350" title="Onboarding Screen for ios">
+  <img src="asset/images/screenshots/onboarding.png" width="350" title="Onboarding Screen for ios">
 </p>
 
 This project is a starting point for a Flutter application.
