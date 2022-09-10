@@ -4,174 +4,175 @@
 
 import 'dart:convert';
 
-CryptoModel cryptoModelFromJson(String str) =>
-    CryptoModel.fromJson(json.decode(str));
+List<CryptoModel> cryptoModelFromJson(String str) => List<CryptoModel>.from(
+    json.decode(str).map((x) => CryptoModel.fromJson(x)));
 
-String cryptoModelToJson(CryptoModel data) => json.encode(data.toJson());
+String cryptoModelToJson(List<CryptoModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class CryptoModel {
   CryptoModel({
-    required this.result,
-    required this.cursor,
-    required this.allowance,
+    required this.id,
+    required this.symbol,
+    required this.name,
+    required this.image,
+    required this.currentPrice,
+    required this.marketCap,
+    required this.marketCapRank,
+    required this.fullyDilutedValuation,
+    required this.totalVolume,
+    required this.high24H,
+    required this.low24H,
+    required this.priceChange24H,
+    required this.priceChangePercentage24H,
+    required this.marketCapChange24H,
+    required this.marketCapChangePercentage24H,
+    required this.circulatingSupply,
+    required this.totalSupply,
+    required this.maxSupply,
+    required this.ath,
+    required this.athChangePercentage,
+    required this.athDate,
+    required this.atl,
+    required this.atlChangePercentage,
+    required this.atlDate,
+    required this.roi,
+    required this.lastUpdated,
   });
 
-  Map<String, Result> result;
-  Cursor cursor;
-  Allowance allowance;
+  String? id;
+  String? symbol;
+  String? name;
+  String? image;
+  double? currentPrice;
+  int? marketCap;
+  int? marketCapRank;
+  int? fullyDilutedValuation;
+  double? totalVolume;
+  double? high24H;
+  double? low24H;
+  double? priceChange24H;
+  double? priceChangePercentage24H;
+  double? marketCapChange24H;
+  double? marketCapChangePercentage24H;
+  double? circulatingSupply;
+  double? totalSupply;
+  double? maxSupply;
+  double? ath;
+  double? athChangePercentage;
+  DateTime? athDate;
+  double? atl;
+  double? atlChangePercentage;
+  DateTime? atlDate;
+  Roi? roi;
+  DateTime? lastUpdated;
 
   factory CryptoModel.fromJson(Map<String, dynamic> json) => CryptoModel(
-        result: Map.from(json["result"])
-            .map((k, v) => MapEntry<String, Result>(k, Result.fromJson(v))),
-        cursor: Cursor.fromJson(json["cursor"]),
-        allowance: Allowance.fromJson(json["allowance"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "result": Map.from(result)
-            .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
-        "cursor": cursor.toJson(),
-        "allowance": allowance.toJson(),
-      };
-}
-
-class Allowance {
-  Allowance({
-    required this.cost,
-    required this.remaining,
-    required this.remainingPaid,
-    required this.account,
-  });
-
-  int cost;
-  int remaining;
-  int remainingPaid;
-  String account;
-
-  factory Allowance.fromJson(Map<String, dynamic> json) => Allowance(
-        cost: json["cost"],
-        remaining: json["remaining"],
-        remainingPaid: json["remainingPaid"],
-        account: json["account"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "cost": cost,
-        "remaining": remaining,
-        "remainingPaid": remainingPaid,
-        "account": account,
-      };
-}
-
-class Cursor {
-  Cursor({
-    required this.last,
-    required this.hasMore,
-  });
-
-  String last;
-  bool hasMore;
-
-  factory Cursor.fromJson(Map<String, dynamic> json) => Cursor(
-        last: json["last"],
-        hasMore: json["hasMore"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "last": last,
-        "hasMore": hasMore,
-      };
-}
-
-class Result {
-  Result({
-    required this.price,
-    required this.volume,
-    required this.volumeBase,
-    required this.volumeQuote,
-    required this.volumeUsd,
-    required this.volumeContracts,
-    required this.volumeSettlement,
-  });
-
-  Price price;
-  double volume;
-  double volumeBase;
-  double volumeQuote;
-  double volumeUsd;
-  double volumeContracts;
-  double volumeSettlement;
-
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-        price: Price.fromJson(json["price"]),
-        volume: json["volume"].toDouble(),
-        volumeBase: json["volumeBase"].toDouble(),
-        volumeQuote: json["volumeQuote"].toDouble(),
-        volumeUsd:
-            json["volumeUSD"] == null ? null : json["volumeUSD"].toDouble(),
-        volumeContracts: json["volumeContracts"] == null
+        id: json["id"],
+        symbol: json["symbol"],
+        name: json["name"],
+        image: json["image"],
+        currentPrice: json["current_price"].toDouble(),
+        marketCap: json["market_cap"],
+        marketCapRank: json["market_cap_rank"],
+        fullyDilutedValuation: json["fully_diluted_valuation"] == null
             ? null
-            : json["volumeContracts"].toDouble(),
-        volumeSettlement: json["volumeSettlement"] == null
+            : json["fully_diluted_valuation"],
+        totalVolume: json["total_volume"].toDouble(),
+        high24H: json["high_24h"].toDouble(),
+        low24H: json["low_24h"].toDouble(),
+        priceChange24H: json["price_change_24h"].toDouble(),
+        priceChangePercentage24H:
+            json["price_change_percentage_24h"].toDouble(),
+        marketCapChange24H: json["market_cap_change_24h"].toDouble(),
+        marketCapChangePercentage24H:
+            json["market_cap_change_percentage_24h"].toDouble(),
+        circulatingSupply: json["circulating_supply"].toDouble(),
+        totalSupply: json["total_supply"] == null
             ? null
-            : json["volumeSettlement"].toDouble(),
+            : json["total_supply"].toDouble(),
+        maxSupply:
+            json["max_supply"] == null ? null : json["max_supply"].toDouble(),
+        ath: json["ath"].toDouble(),
+        athChangePercentage: json["ath_change_percentage"].toDouble(),
+        athDate: DateTime.parse(json["ath_date"]),
+        atl: json["atl"].toDouble(),
+        atlChangePercentage: json["atl_change_percentage"].toDouble(),
+        atlDate: DateTime.parse(json["atl_date"]),
+        roi: json["roi"] == null ? null : Roi.fromJson(json["roi"]),
+        lastUpdated: DateTime.parse(json["last_updated"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "price": price.toJson(),
-        "volume": volume,
-        "volumeBase": volumeBase,
-        "volumeQuote": volumeQuote,
-        "volumeUSD": volumeUsd == null ? null : volumeUsd,
-        "volumeContracts": volumeContracts == null ? null : volumeContracts,
-        "volumeSettlement": volumeSettlement == null ? null : volumeSettlement,
+        "id": id,
+        "symbol": symbol,
+        "name": name,
+        "image": image,
+        "current_price": currentPrice,
+        "market_cap": marketCap,
+        "market_cap_rank": marketCapRank,
+        "fully_diluted_valuation":
+            fullyDilutedValuation == null ? null : fullyDilutedValuation,
+        "total_volume": totalVolume,
+        "high_24h": high24H,
+        "low_24h": low24H,
+        "price_change_24h": priceChange24H,
+        "price_change_percentage_24h": priceChangePercentage24H,
+        "market_cap_change_24h": marketCapChange24H,
+        "market_cap_change_percentage_24h": marketCapChangePercentage24H,
+        "circulating_supply": circulatingSupply,
+        "total_supply": totalSupply == null ? null : totalSupply,
+        "max_supply": maxSupply == null ? null : maxSupply,
+        "ath": ath,
+        "ath_change_percentage": athChangePercentage,
+        "ath_date": athDate?.toIso8601String(),
+        "atl": atl,
+        "atl_change_percentage": atlChangePercentage,
+        "atl_date": atlDate?.toIso8601String(),
+        "roi": roi == null ? null : roi?.toJson(),
+        "last_updated": lastUpdated?.toIso8601String(),
       };
 }
 
-class Price {
-  Price({
-    required this.last,
-    required this.high,
-    required this.low,
-    required this.change,
+class Roi {
+  Roi({
+    this.times,
+    this.currency,
+    this.percentage,
   });
 
-  double last;
-  double high;
-  double low;
-  Change change;
+  double? times;
+  Currency? currency;
+  double? percentage;
 
-  factory Price.fromJson(Map<String, dynamic> json) => Price(
-        last: json["last"].toDouble(),
-        high: json["high"].toDouble(),
-        low: json["low"].toDouble(),
-        change: Change.fromJson(json["change"]),
-      );
-
-  Map<String, dynamic> toJson() => {
-        "last": last,
-        "high": high,
-        "low": low,
-        "change": change.toJson(),
-      };
-}
-
-class Change {
-  Change({
-    required this.percentage,
-    required this.absolute,
-  });
-
-  double percentage;
-  double absolute;
-
-  factory Change.fromJson(Map<String, dynamic> json) => Change(
+  factory Roi.fromJson(Map<String, dynamic> json) => Roi(
+        times: json["times"].toDouble(),
+        currency: currencyValues.map[json["currency"]],
         percentage: json["percentage"].toDouble(),
-        absolute: json["absolute"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {
+        "times": times,
+        "currency": currencyValues.reverse[currency],
         "percentage": percentage,
-        "absolute": absolute,
       };
+}
+
+enum Currency { BTC, USD, ETH }
+
+final currencyValues =
+    EnumValues({"btc": Currency.BTC, "eth": Currency.ETH, "usd": Currency.USD});
+
+class EnumValues<T> {
+  late Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = map.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap;
+  }
 }

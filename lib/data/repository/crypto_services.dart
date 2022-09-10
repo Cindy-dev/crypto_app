@@ -1,2 +1,1 @@
-//https://api.cryptowat.ch/markets/summaries?apikey=9ESSQV10BX295TTNI3GO
-//https://docs.cryptowat.ch/rest-api/markets/ohlc
+//https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
