@@ -7,12 +7,13 @@ class CoinApiService {
   Dio dio = Dio();
   Logger logger = Logger();
 
-  Future<List<CryptoModel>> getCoins() async {
+  Future getCoins() async {
     const url =
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';
     try {
       final response = await dio.get(url);
-      final cryptoModel = CryptoModel.fromJson(response.data);
+      final cryptoModel = List<CryptoModel>.from(
+          response.data.map((x) => CryptoModel.fromJson(x)));
       return cryptoModel;
     } catch (e) {
       print(e);
@@ -22,4 +23,5 @@ class CoinApiService {
   }
 }
 
-final coinApiServiceProvider = Provider<CoinApiService>((ref) => CoinApiService());
+final coinApiServiceProvider =
+    Provider<CoinApiService>((ref) => CoinApiService());

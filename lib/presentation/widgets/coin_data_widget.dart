@@ -18,16 +18,24 @@ class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
         builder: (context) {
           final result = ref.watch(cryptoDataProvider);
           return result.when(
-
               loading: () => const CircularProgressIndicator(
                     color: Colors.white,
                   ),
               data: (data) {
-                print(data.toString());
                 return ListView.builder(
+                    shrinkWrap: true,
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
-                      return Text(data![index].name!, style: TextStyle(color: Colors.white),);
+                      return
+                        Row(
+                          children: [
+                            
+                          ],
+                        );
+                        Text(
+                        data![index].name!,
+                        style: const TextStyle(color: Colors.white),
+                      );
                     });
               },
               error: (e, s) => Text(e.toString()));

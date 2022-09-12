@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          const CoinDataWidget()
+          const Expanded(child: CoinDataWidget())
         ],
       ),
     );
