@@ -2,6 +2,7 @@ import 'package:crypto_app/presentation/widgets/stacked.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../utils/constants/colors.dart';
+import '../widgets/coin_data_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -44,7 +45,8 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 14))
               ],
             ),
-          )
+          ),
+          const CoinDataWidget()
         ],
       ),
     );
