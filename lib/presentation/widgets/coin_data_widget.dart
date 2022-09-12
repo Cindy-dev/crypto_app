@@ -13,20 +13,26 @@ class CoinDataWidget extends StatefulHookConsumerWidget {
 class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
   @override
   Widget build(BuildContext context) {
-    final viewModel = ref.watch(cryptoDataProvider);
-    return Container(
-        child: viewModel.when(
-            idle: () => Container(),
-            loading: () => const CircularProgressIndicator(
-                  color: Colors.white,
-                ),
-            success: (data) {
-              return ListView.builder(
-                  itemCount: data?.length,
-                  itemBuilder: (context, index) {
-                    return Text(data![index].name!);
-                  });
-            },
-            error: (e, s) => Text(e.toString())));
+    return Center(
+      child: Builder(
+        builder: (context) {
+          final result = ref.watch(cryptoDataProvider);
+          return result.when(
+
+              loading: () => const CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+              data: (data) {
+                print(data.toString());
+                return ListView.builder(
+                    itemCount: data!.length,
+                    itemBuilder: (context, index) {
+                      return Text(data![index].name!, style: TextStyle(color: Colors.white),);
+                    });
+              },
+              error: (e, s) => Text(e.toString()));
+        },
+      ),
+    );
   }
 }

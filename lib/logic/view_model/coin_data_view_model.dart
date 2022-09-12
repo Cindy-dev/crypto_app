@@ -7,7 +7,7 @@ class CryptoDataViewModel extends RequestStateNotifier<List<CryptoModel>> {
   final CryptoDataManager cryptoDataManager;
 
   CryptoDataViewModel(Ref ref)
-      : cryptoDataManager = ref.read(cryptoDataManagerProvider) {}
+      : cryptoDataManager = ref.read(cryptoDataManagerProvider);
 
   void getCoins() => makeRequest(() => cryptoDataManager.getCoins());
 }

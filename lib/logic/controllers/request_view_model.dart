@@ -25,6 +25,7 @@ class RequestStateNotifier<T> extends StateNotifier<RequestState<T>> {
   }
 }
 
+
 @freezed
 class RequestState<T> with _$RequestState<T> {
   const factory RequestState.idle() = Idle<T>;

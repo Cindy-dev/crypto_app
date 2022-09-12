@@ -12,11 +12,11 @@ class CoinApiService {
         'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd';
     try {
       final response = await dio.get(url);
-      logger.wtf(response.data);
-      final cryptoModel = cryptoModelFromJson(response.data);
+      final cryptoModel = CryptoModel.fromJson(response.data);
       return cryptoModel;
     } catch (e) {
-      logger.wtf(e);
+      print(e);
+      //logger.wtf(e);
       throw e;
     }
   }
