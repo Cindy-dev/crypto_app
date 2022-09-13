@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 24),
+            padding: const EdgeInsets.fromLTRB(24, 40, 24, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [

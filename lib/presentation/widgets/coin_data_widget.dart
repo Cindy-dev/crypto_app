@@ -1,4 +1,6 @@
 import 'package:crypto_app/logic/view_model_provider.dart';
+import 'package:crypto_app/presentation/utils/constants/colors.dart';
+import 'package:crypto_app/presentation/utils/constants/device_size.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,34 +15,65 @@ class CoinDataWidget extends StatefulHookConsumerWidget {
 class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Builder(
-        builder: (context) {
-          final result = ref.watch(cryptoDataProvider);
-          return result.when(
-              loading: () => const CircularProgressIndicator(
+    return Builder(
+      builder: (context) {
+        final result = ref.watch(cryptoDataProvider);
+        return result.when(
+            loading: () => const Center(
+                  child: CircularProgressIndicator(
                     color: Colors.white,
                   ),
-              data: (data) {
-                return ListView.builder(
+                ),
+            data: (data) {
+              return MediaQuery.removePadding(
+                context: context,
+                removeTop: true,
+                child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
-                      return
-                        Row(
+                      return Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
-                            
+                            Container(
+                              color: tColor,
+                              width: context.screenWidth() / 7,
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 17),
+                              child: Image.network(
+                                data![index].image.toString(),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(data![index].name!,
+                                    style: const TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w700,
+                                        color: wColor,
+                                        fontSize: 16)),
+                                Text(data![index].symbol!.toUpperCase(),
+                                    style: const TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        color: blackAsh,
+                                        fontSize: 14)),
+                              ],
+                            ),
+                            const SizedBox(width: 22),
                           ],
-                        );
-                        Text(
-                        data![index].name!,
-                        style: const TextStyle(color: Colors.white),
+                        ),
                       );
-                    });
-              },
-              error: (e, s) => Text(e.toString()));
-        },
-      ),
+                    }),
+              );
+            },
+            error: (e, s) => Text(e.toString()));
+      },
     );
   }
 }

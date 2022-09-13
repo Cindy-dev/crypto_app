@@ -9,3 +9,4 @@ const gColor2 =Color(0xffbcd8e9);
 const gColor3 =Color(0xffd796a8);
 const gColor4 =Color(0xffc4769d);
 const gColor5 =Color(0xffd4ddda);
+const blackAsh = Color(0xff6C757D);
