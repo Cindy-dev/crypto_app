@@ -10,3 +10,5 @@ const gColor3 =Color(0xffd796a8);
 const gColor4 =Color(0xffc4769d);
 const gColor5 =Color(0xffd4ddda);
 const blackAsh = Color(0xff6C757D);
+const greenColor = Color(0xff48D49E);
+const dipColor = Color(0xffFF8266);

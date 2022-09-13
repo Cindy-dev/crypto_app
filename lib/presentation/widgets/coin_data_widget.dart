@@ -32,6 +32,7 @@ class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
                     shrinkWrap: true,
                     itemCount: data!.length,
                     itemBuilder: (context, index) {
+                      final string = data![index].priceChangePercentage24H!.toStringAsFixed(2);
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Row(
@@ -66,6 +67,27 @@ class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
                               ],
                             ),
                             const SizedBox(width: 22),
+                            const Spacer(),
+                            data[index]!
+                                    .priceChangePercentage24H!
+                                    .toString()
+                                    .contains('-')
+                                ? Text(
+                                    '$string%',
+                                    textAlign: TextAlign.end,
+                                    style: const TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        color: dipColor,
+                                        fontSize: 14))
+                                : Text(
+                                    '+$string%',
+                                    textAlign: TextAlign.end,
+                                    style: const TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w400,
+                                        color: greenColor,
+                                        fontSize: 14)),
                           ],
                         ),
                       );

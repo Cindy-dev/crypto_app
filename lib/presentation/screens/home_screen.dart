@@ -29,20 +29,25 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(24, 40, 24, 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text('Holdings',
+              children: [
+                const Text('Coins',
                     style: TextStyle(
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.w700,
                         color: wColor,
                         fontSize: 20)),
-                Text('See All',
-                    style: TextStyle(
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w500,
-                        color: wColor,
-                        decoration: TextDecoration.underline,
-                        fontSize: 14))
+                InkWell(
+                  onTap: () {
+
+                  },
+                  child: const Text('Search',
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          color: wColor,
+                          decoration: TextDecoration.underline,
+                          fontSize: 14)),
+                )
               ],
             ),
           ),
