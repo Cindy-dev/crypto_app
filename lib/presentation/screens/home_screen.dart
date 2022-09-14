@@ -37,15 +37,12 @@ class HomeScreen extends StatelessWidget {
                         color: wColor,
                         fontSize: 20)),
                 InkWell(
-                  onTap: () {
-
-                  },
-                  child: const Text('Search',
+                  onTap: () {},
+                  child: const Text('Refresh',
                       style: TextStyle(
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w500,
                           color: wColor,
-                          decoration: TextDecoration.underline,
                           fontSize: 14)),
                 )
               ],
