@@ -1,4 +1,3 @@
-import 'package:crypto_app/data/model/chart_model.dart';
 import 'package:crypto_app/data/model/crypto_model.dart';
 import 'package:crypto_app/presentation/utils/constants/device_size.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +17,6 @@ class CoinDetailScreen extends StatefulHookConsumerWidget {
 class _CoinDetailScreenState extends ConsumerState<CoinDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final List<ChartModel> charData = [
-      ChartModel(
-          widget.cryptoModel.lastUpdated!, widget.cryptoModel.currentPrice!)
-    ];
     var priceFormat = NumberFormat("###,###", "en_US");
     final string =
         widget.cryptoModel.priceChangePercentage24H!.toStringAsFixed(2);

@@ -672,7 +672,7 @@ class Platforms {
     this.empty,
   });
 
-  String empty;
+  String? empty;
 
   factory Platforms.fromJson(Map<String, dynamic> json) => Platforms(
         empty: json[""],
@@ -689,7 +689,7 @@ class PublicInterestStats {
     this.bingMatches,
   });
 
-  int alexaRank;
+  num? alexaRank;
   dynamic bingMatches;
 
   factory PublicInterestStats.fromJson(Map<String, dynamic> json) =>
@@ -850,9 +850,9 @@ class Market {
     this.hasTradingIncentive,
   });
 
-  String name;
-  String identifier;
-  bool hasTradingIncentive;
+  String? name;
+  String? identifier;
+  bool? hasTradingIncentive;
 
   factory Market.fromJson(Map<String, dynamic> json) => Market(
         name: json["name"],
@@ -894,8 +894,8 @@ enum TrustScore { GREEN }
 final trustScoreValues = EnumValues({"green": TrustScore.GREEN});
 
 class EnumValues<T> {
-  Map<String, T> map;
-  Map<T, String> reverseMap;
+  late Map<String, T> map;
+  late Map<T, String> reverseMap;
 
   EnumValues(this.map);
 
