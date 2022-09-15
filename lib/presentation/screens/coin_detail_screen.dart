@@ -4,7 +4,6 @@ import 'package:crypto_app/presentation/utils/constants/device_size.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 import '../utils/constants/colors.dart';
 
 class CoinDetailScreen extends StatefulHookConsumerWidget {
@@ -19,11 +18,7 @@ class CoinDetailScreen extends StatefulHookConsumerWidget {
 class _CoinDetailScreenState extends ConsumerState<CoinDetailScreen> {
   @override
   Widget build(BuildContext context) {
-    final List<ChartModel> chartData = [
-      ChartModel(
-          widget.cryptoModel.lastUpdated!, widget.cryptoModel.currentPrice!),
-      ChartModel(
-          widget.cryptoModel.lastUpdated!, widget.cryptoModel.currentPrice!),
+    final List<ChartModel> charData = [
       ChartModel(
           widget.cryptoModel.lastUpdated!, widget.cryptoModel.currentPrice!)
     ];
@@ -40,25 +35,14 @@ class _CoinDetailScreenState extends ConsumerState<CoinDetailScreen> {
           padding: const EdgeInsets.all(10.0),
           child: Column(
             children: [
-              Container(
-                  child: SfCartesianChart(
-                      primaryXAxis: DateTimeAxis(),
-                      series: <ChartSeries>[
-                    // Renders line chart
-                    FastLineSeries<ChartModel, DateTime>(
-                      color: greenColor,
-                        dataSource: chartData,
-                        xValueMapper: (ChartModel data, _) => data.chartTime,
-                        yValueMapper: (ChartModel data, _) => data.price)
-                  ])),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
                     color: tColor,
                     width: context.screenWidth() / 7,
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 15, horizontal: 17),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 15, horizontal: 17),
                     child: Image.network(
                       widget.cryptoModel.image.toString(),
                       fit: BoxFit.contain,
