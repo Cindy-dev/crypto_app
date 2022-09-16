@@ -1,4 +1,3 @@
-import 'package:crypto_app/presentation/widgets/searchbar.dart';
 import 'package:crypto_app/presentation/widgets/stacked.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

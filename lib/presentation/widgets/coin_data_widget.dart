@@ -37,63 +37,72 @@ class _CoinDataWidgetState extends ConsumerState<CoinDataWidget> {
                       final string = data![index]
                           .priceChangePercentage24H!
                           .toStringAsFixed(2);
-                      return Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: GestureDetector(
-                          onTap: () => navigatePush(context,
-                              CoinDetailScreen(cryptoModel: data[index])),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Container(
-                                color: tColor,
-                                width: context.screenWidth() / 7,
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 17),
-                                child: Image.network(
-                                  data![index].image.toString(),
-                                  fit: BoxFit.contain,
+                      return InkWell(
+                        onTap: () {
+                          navigatePush(
+                              context,
+                              CoinDetailScreen(
+                                cryptoModel: data[index],
+                                id: data![index].id!,
+                              ));
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: GestureDetector(
+                            onTap: () {},
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  color: tColor,
+                                  width: context.screenWidth() / 7,
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 17),
+                                  child: Image.network(
+                                    data![index].image.toString(),
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 12),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(data![index].name!,
-                                      style: const TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w700,
-                                          color: wColor,
-                                          fontSize: 16)),
-                                  Text(data![index].symbol!.toUpperCase(),
-                                      style: const TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          color: blackAsh,
-                                          fontSize: 14)),
-                                ],
-                              ),
-                              const SizedBox(width: 22),
-                              const Spacer(),
-                              data[index]!
-                                      .priceChangePercentage24H!
-                                      .toString()
-                                      .contains('-')
-                                  ? Text('$string%',
-                                      textAlign: TextAlign.end,
-                                      style: const TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          color: dipColor,
-                                          fontSize: 14))
-                                  : Text('+$string%',
-                                      textAlign: TextAlign.end,
-                                      style: const TextStyle(
-                                          fontFamily: 'Poppins',
-                                          fontWeight: FontWeight.w400,
-                                          color: greenColor,
-                                          fontSize: 14)),
-                            ],
+                                const SizedBox(width: 12),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(data![index].name!,
+                                        style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w700,
+                                            color: wColor,
+                                            fontSize: 16)),
+                                    Text(data![index].symbol!.toUpperCase(),
+                                        style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w400,
+                                            color: blackAsh,
+                                            fontSize: 14)),
+                                  ],
+                                ),
+                                const SizedBox(width: 22),
+                                const Spacer(),
+                                data[index]!
+                                        .priceChangePercentage24H!
+                                        .toString()
+                                        .contains('-')
+                                    ? Text('$string%',
+                                        textAlign: TextAlign.end,
+                                        style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w400,
+                                            color: dipColor,
+                                            fontSize: 14))
+                                    : Text('+$string%',
+                                        textAlign: TextAlign.end,
+                                        style: const TextStyle(
+                                            fontFamily: 'Poppins',
+                                            fontWeight: FontWeight.w400,
+                                            color: greenColor,
+                                            fontSize: 14)),
+                              ],
+                            ),
                           ),
                         ),
                       );
