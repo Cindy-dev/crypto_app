@@ -39,7 +39,7 @@ class _CoinDetailScreenState extends ConsumerState<CoinDetailScreen> {
                 data: (data) {
                   return Chart(
                     chartModel: data,
-                    id: widget.id!,
+                    // id: widget.id!,
                   );
                 },
                 error: (e, st) {
