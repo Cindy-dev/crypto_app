@@ -47,71 +47,146 @@ class _CoinDetailScreenState extends ConsumerState<CoinDetailScreen> {
                   return Text(e.toString());
                 },
                 loading: () => const CircularProgressIndicator()),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  color: tColor,
-                  width: context.screenWidth() / 7,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 15, horizontal: 17),
-                  child: Image.network(
-                    widget.cryptoModel.image.toString(),
-                    fit: BoxFit.contain,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Container(
+                    color: tColor,
+                    width: context.screenWidth() / 7,
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15, horizontal: 17),
+                    child: Image.network(
+                      widget.cryptoModel.image.toString(),
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(widget.cryptoModel.name!,
-                        style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                            color: wColor,
-                            fontSize: 16)),
-                    Text(widget.cryptoModel.symbol!.toUpperCase(),
-                        style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w400,
-                            color: blackAsh,
-                            fontSize: 14)),
-                  ],
-                ),
-                const SizedBox(width: 22),
-                const Spacer(),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                        '\$${priceFormat.format(widget.cryptoModel.currentPrice!)}',
-                        textAlign: TextAlign.end,
-                        style: const TextStyle(
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w700,
-                            color: wColor,
-                            fontSize: 16)),
-                    widget.cryptoModel.priceChangePercentage24H!
-                            .toString()
-                            .contains('-')
-                        ? Text('$string%',
-                            textAlign: TextAlign.end,
-                            style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: dipColor,
-                                fontSize: 14))
-                        : Text('+$string%',
-                            textAlign: TextAlign.end,
-                            style: const TextStyle(
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w400,
-                                color: greenColor,
-                                fontSize: 14)),
-                  ],
-                ),
-              ],
+                  const SizedBox(width: 12),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(widget.cryptoModel.name!,
+                          style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w700,
+                              color: wColor,
+                              fontSize: 16)),
+                      Text(widget.cryptoModel.symbol!.toUpperCase(),
+                          style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w400,
+                              color: blackAsh,
+                              fontSize: 14)),
+                    ],
+                  ),
+                  const SizedBox(width: 22),
+                  const Spacer(),
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                          '\$${priceFormat.format(widget.cryptoModel.currentPrice!)}',
+                          textAlign: TextAlign.end,
+                          style: const TextStyle(
+                              fontFamily: 'Poppins',
+                              fontWeight: FontWeight.w700,
+                              color: wColor,
+                              fontSize: 16)),
+                      widget.cryptoModel.priceChangePercentage24H!
+                              .toString()
+                              .contains('-')
+                          ? Text('$string%',
+                              textAlign: TextAlign.end,
+                              style: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                  color: dipColor,
+                                  fontSize: 14))
+                          : Text('+$string%',
+                              textAlign: TextAlign.end,
+                              style: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w400,
+                                  color: greenColor,
+                                  fontSize: 14)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const Divider(
+              color: wColor,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('High 24H',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: wColor,
+                          fontSize: 14)),
+                  Text('\$${priceFormat.format(widget.cryptoModel.high24H!)}',
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: greenColor,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Low 24H',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: wColor,
+                          fontSize: 14)),
+                  Text('\$${priceFormat.format(widget.cryptoModel.low24H!)}',
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: Colors.red,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('All Time High',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: wColor,
+                          fontSize: 14)),
+                  Text('\$${priceFormat.format(widget.cryptoModel.ath!)}',
+                      textAlign: TextAlign.end,
+                      style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w400,
+                          color: wColor,
+                          fontSize: 14)),
+                ],
+              ),
+            ),
+            const Divider(
+              color: wColor,
             ),
           ],
         ),
