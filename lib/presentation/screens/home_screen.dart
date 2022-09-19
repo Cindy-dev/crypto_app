@@ -25,6 +25,7 @@ class HomeScreen extends StatelessWidget {
               const Stacked(),
             ],
           ),
+
           Padding(
             padding: const EdgeInsets.fromLTRB(24, 40, 24, 10),
             child: Row(
